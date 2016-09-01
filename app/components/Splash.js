@@ -23,15 +23,15 @@ export default class Splash extends Component {
   render () {
     return (
       <View style={styles.container}>
-        <Image style={styles.logo} source={{uri: 'http://facebook.github.io/react/img/logo_og.png'}} />
+        <Image style={styles.logo} source={{uri: 'http://fleets.drivr.com/wp-content/uploads/sites/5/2015/02/drivr_logo_white.png'}} />
         <Text style={styles.text}>
           Get a ride
         </Text>
-          <View style={{flex: 2, alignItems: 'center'}}>
+          <View style={{flex: 2, alignSelf: 'stretch', alignItems: 'stretch', flexDirection: 'column'}}>
               <Button
                 containerStyle={[styles.button, styles.buttonRegister]}
                 styleDisabled={{color: 'red'}}
-                style={{fontSize: 20, color: 'white', textAlign:'center'}}
+                style={{fontSize: 20, color: 'white', alignItems: 'center'}}
                 onPress={() => this._onLogin()}>
                 Register
               </Button>
@@ -60,18 +60,19 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'column',
     justifyContent: 'center',
-    alignItems: 'center',
+    alignItems: 'stretch',
     backgroundColor: '#2D62B4'
   },
   logo: {
+    alignSelf: 'center',
+    resizeMode: 'contain',
     height: 200,
     width: 200
   },
   button: {
-    flex: 2,
-    margin: 10,
-    paddingLeft: 50,
-    paddingRight: 50,
+    height: 50,
+    marginVertical: 10,
+    marginHorizontal: 20,
     alignItems: 'stretch',
     overflow: 'hidden',
     borderRadius: 4,
@@ -87,6 +88,7 @@ const styles = StyleSheet.create({
   },
   text: {
     flex: 2,
+    alignSelf: 'center',
     color: 'white'
   }
 })
