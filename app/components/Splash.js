@@ -7,49 +7,65 @@ import {
 } from 'react-native'
 import Button from 'react-native-button'
 
+const route = {
+  type: 'push',
+  route: {
+    key: 'signUp',
+    title: 'SignUp'
+  }
+}
+
 export default class Splash extends Component {
-  _onSignUp () {
+  constructor({_handleNavigate}) {
+    super()
+    console.log(_handleNavigate)
+    this._handleNavigate = _handleNavigate
+    this._onSignUp = this._onSignUp.bind(this)
+  }
+
+  _onSignUp() {
+    this._handleNavigate(route)
     console.log('_onSignUp Pressed!')
   }
 
-  _onLogin () {
+  _onLogin() {
     console.log('_onLogin Pressed!')
   }
 
-  _onSkip () {
+  _onSkip() {
     console.log('_onLogin Pressed!')
   }
 
-  render () {
+  render() {
     return (
       <View style={styles.container}>
-        <Image style={styles.logo} source={{uri: 'http://fleets.drivr.com/wp-content/uploads/sites/5/2015/02/drivr_logo_white.png'}} />
+        <Image style={styles.logo} source={{ uri: 'http://fleets.drivr.com/wp-content/uploads/sites/5/2015/02/drivr_logo_white.png' }} />
         <Text style={styles.text}>
           Get a ride
         </Text>
-          <View style={{flex: 2, alignSelf: 'stretch', alignItems: 'stretch', flexDirection: 'column'}}>
-              <Button
-                containerStyle={[styles.button, styles.buttonRegister]}
-                styleDisabled={{color: 'red'}}
-                style={{fontSize: 20, color: 'white', alignItems: 'center'}}
-                onPress={() => this._onLogin()}>
-                Register
-              </Button>
-              <Button
-                containerStyle={[styles.button, styles.buttonSignIn]}
-                styleDisabled={{color: 'red'}}
-                style={{fontSize: 20, color: 'white', textAlign: 'center' }}
-                onPress={() => this._onSignUp()}>
-                Sign In
-              </Button>
-              <Button
-                containerStyle={[styles.button]}
-                styleDisabled={{color: 'red'}}
-                style={{fontSize: 12, color: '#ffffff44'}}
-                onPress={() => this._onSkip()}>
-                Skip to see how it works first
-              </Button>
-          </View>
+        <View style={{ flex: 2, alignSelf: 'stretch', alignItems: 'stretch', flexDirection: 'column' }}>
+          <Button
+            containerStyle={[styles.button, styles.buttonRegister]}
+            styleDisabled={{ color: 'red' }}
+            style={{ fontSize: 20, color: 'white', alignItems: 'center' }}
+            onPress={() => this._onLogin() }>
+            Register
+          </Button>
+          <Button
+            containerStyle={[styles.button, styles.buttonSignIn]}
+            styleDisabled={{ color: 'red' }}
+            style={{ fontSize: 20, color: 'white', textAlign: 'center' }}
+            onPress={() => this._onSignUp() }>
+            Sign In
+          </Button>
+          <Button
+            containerStyle={styles.button}
+            styleDisabled={{ color: 'red' }}
+            style={{ fontSize: 12, color: '#ffffff44' }}
+            onPress={() => this._onSkip() }>
+            Skip to see how it works first
+          </Button>
+        </View>
       </View>
     )
   }
@@ -76,7 +92,6 @@ const styles = StyleSheet.create({
     alignItems: 'stretch',
     overflow: 'hidden',
     borderRadius: 4,
-    color: '#ffffff',
     justifyContent: 'center'
   },
   buttonRegister: {
