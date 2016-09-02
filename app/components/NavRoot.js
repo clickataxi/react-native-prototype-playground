@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import Splash from './Splash'
 import SignUp from './SignUp'
-
+import {Directions} from 'NavigationCardStackPanResponder'
 import { BackAndroid, NavigationExperimental } from 'react-native'
 
 const {CardStack: NavigationCardStack} = NavigationExperimental
@@ -49,7 +49,7 @@ class NavRoot extends Component {
   render () {
     return (
       <NavigationCardStack
-        direction='vertical'
+        direction={Directions.HORIZONTAL}
         navigationState={this.props.navigation}
         onNavigate={this._handleNavigate.bind(this)}
         renderScene={this._renderScene} />
